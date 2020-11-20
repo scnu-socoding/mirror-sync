@@ -7,7 +7,6 @@
 发行版软件仓库镜像：
 * Arch Linux
 * Arch Linux CN
-* Manjaro Linux
 
 常用发行版安装介质：
 * Ubuntu
