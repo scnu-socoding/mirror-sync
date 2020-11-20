@@ -6,6 +6,8 @@
 
 发行版软件仓库镜像：
 * Arch Linux
+* Arch Linux CN
+* Manjaro Linux
 
 常用发行版安装介质：
 * Ubuntu
@@ -16,4 +18,4 @@
 * Dev-Cpp
 * VirtualBox
 
-仓库所附 Arch Linux 同步脚本 [`archlinux.sh`](./archlinux.sh) 仅用于测试。
+仓库所附同步脚本仅用于测试。
