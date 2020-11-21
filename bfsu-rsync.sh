@@ -19,16 +19,18 @@
 #
 ########
 
+distro=${1}
+
 # Directory where the repo is stored locally. Example: /srv/repo
-target="/mnt/socoding/files/archlinux"
+target="/mnt/socoding/files/${distro}"
 
 # Directory where files are downloaded to before being moved in place.
 # This should be on the same filesystem as $target, but not a subdirectory of $target.
 # Example: /srv/tmp
-tmp="/mnt/socoding/archlinux-mirror-pending"
+tmp="/mnt/socoding/${distro}-mirror-pending"
 
 # Lockfile path
-lock="/var/lock/archlinux-syncrepo.lck"
+lock="/var/lock/${distro}-syncrepo.lck"
 
 # If you want to limit the bandwidth used by rsync set this.
 # Use 0 to disable the limit.
@@ -36,7 +38,7 @@ lock="/var/lock/archlinux-syncrepo.lck"
 bwlimit=0
 
 # The source URL of the mirror you want to sync from.
-source_url='rsync://mirrors.bfsu.edu.cn/archlinux/'
+source_url="rsync://mirrors.bfsu.edu.cn/${distro}/"
 
 #### END CONFIG
 
@@ -57,7 +59,7 @@ rsync_cmd() {
 	fi
 
 	if ((bwlimit>0)); then
-		cmd+=("--bwlimit=$bwlimit")
+		cmd+=("--bwlimit=${bwlimit}")
 	fi
 
 	"${cmd[@]}" "$@"
@@ -67,4 +69,4 @@ rsync_cmd \
 	"${source_url}" \
 	"${target}"
 
-echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/archlinux-sync.log
+echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/${distro}-sync.log

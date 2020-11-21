@@ -1,4 +1,6 @@
 #!/bin/bash
 cd /mnt/socoding/mirror-sync
-./archlinux.sh
-./archlinuxcn.sh
+for distro in "archlinux" "archlinuxcn" "gentoo-portage" "manjaro"
+do
+    ./bfsu-rsync.sh ${distro}
+done
