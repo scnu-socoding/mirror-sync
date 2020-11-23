@@ -27,7 +27,7 @@ target="/mnt/socoding/files/${distro}"
 # Directory where files are downloaded to before being moved in place.
 # This should be on the same filesystem as $target, but not a subdirectory of $target.
 # Example: /srv/tmp
-tmp="/mnt/socoding/${distro}-mirror-pending"
+tmp="/mnt/socoding/mirror-pending/${distro}"
 
 # Lockfile path
 lock="/var/lock/${distro}-syncrepo.lck"
@@ -69,4 +69,5 @@ rsync_cmd \
 	"${source_url}" \
 	"${target}"
 
-echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/${distro}-sync.log
+touch ${target}
+echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
