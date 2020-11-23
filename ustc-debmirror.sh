@@ -1,12 +1,20 @@
 #!/bin/bash
-debmirror /mnt/socoding/files/ubuntu \
+
+distro=${1}
+dist=${2}
+section=${3}
+
+debmirror /mnt/socoding/files/${distro} \
     --host=rsync.mirrors.ustc.edu.cn \
-    --root=repo/ubuntu \
+    --root=repo/${distro} \
     --arch=amd64 \
-    --dist=focal,focal-updates,focal-security,focal-backports,focal-proposed,groovy,groovy-updates,groovy-security,groovy-backports,groovy-proposed \
+    --dist=${dist} \
     --verbose \
-    --section=main,multiverse,universe,restricted \
+    --section=${section} \
     --method=rsync \
     --nosource \
     --ignore-release-gpg \
     --ignore-small-errors
+
+touch /mnt/socoding/files/${distro}
+echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
