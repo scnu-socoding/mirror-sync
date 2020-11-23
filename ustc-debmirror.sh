@@ -14,7 +14,8 @@ debmirror /mnt/socoding/files/${distro} \
     --method=rsync \
     --nosource \
     --ignore-release-gpg \
-    --ignore-small-errors
+    --ignore-small-errors \
+    --progress
 
 touch /mnt/socoding/files/${distro}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
