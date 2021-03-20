@@ -5,8 +5,8 @@ dist=${2}
 section=${3}
 
 debmirror /mnt/socoding/files/${distro} \
-    --host=rsync.mirrors.ustc.edu.cn \
-    --root=repo/${distro} \
+    --host=mirrors.tuna.tsinghua.edu.cn \
+    --root=${distro} \
     --arch=amd64 \
     --dist=${dist} \
     --verbose \

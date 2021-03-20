@@ -52,11 +52,7 @@ rsync_cmd() {
 	local -a cmd=(rsync -rtlH --safe-links --delete-after ${VERBOSE} "--timeout=600" "--contimeout=60" -p \
 		--delay-updates --no-motd "--temp-dir=${tmp}")
 
-	if stty &>/dev/null; then
-		cmd+=(-h -v --progress)
-	else
-		cmd+=(--quiet)
-	fi
+	cmd+=(-h -v --progress)
 
 	if ((bwlimit>0)); then
 		cmd+=("--bwlimit=${bwlimit}")
