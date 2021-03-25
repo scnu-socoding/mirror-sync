@@ -7,7 +7,7 @@ done
 
 
 distro="ubuntu"
-dist="focal,focal-updates,focal-security,focal-backports,focal-proposed,groovy,groovy-updates,groovy-security,groovy-backports,groovy-proposed"
+dist="focal,focal-updates,focal-security,focal-backports,focal-proposed,groovy,groovy-updates,groovy-security,groovy-backports,groovy-proposed,hirsute,hirsute-backports,hirsute-proposed,hirsute-security,hirsute-updates"
 section="main,multiverse,universe,restricted"
 ./tuna-debmirror.sh ${distro} ${dist} ${section}
 
