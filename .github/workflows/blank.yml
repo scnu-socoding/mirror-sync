@@ -1,0 +1,26 @@
+name: rsync
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  archlinux:
+    runs-on: [self-hosted, linux, main, socoding]
+
+    steps:        
+      - name: perform sync
+        run: |
+          distro="archlinux"
+          ./bfsu-rsync.sh ${distro}
+  
+  archlinuxcn:
+    runs-on: [self-hosted, linux, main, socoding]
+
+    steps:        
+      - name: perform sync
+        run: |
+          distro="archlinuxcn"
+          ./bfsu-rsync.sh ${distro}
