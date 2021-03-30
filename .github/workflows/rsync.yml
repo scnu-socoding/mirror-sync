@@ -9,7 +9,6 @@ on:
 jobs:
   archlinux:
     runs-on: [self-hosted, linux, main, socoding]
-
     steps:        
       - name: perform sync
         run: |
@@ -18,9 +17,16 @@ jobs:
   
   archlinuxcn:
     runs-on: [self-hosted, linux, main, socoding]
-
     steps:        
       - name: perform sync
         run: |
           distro="archlinuxcn"
+          /mnt/socoding/mirror-sync/bfsu-rsync.sh ${distro}
+
+  manjaro:
+    runs-on: [self-hosted, linux, main, socoding]
+    steps:        
+      - name: perform sync
+        run: |
+          distro="manjaro"
           /mnt/socoding/mirror-sync/bfsu-rsync.sh ${distro}
