@@ -1,0 +1,38 @@
+name: debmirror
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  debian:
+    runs-on: [self-hosted, linux, main, socoding]
+    steps:        
+      - name: perform sync
+        run: |
+          distro="debian"
+          dist="buster,buster-updates,buster-proposed-updates,buster-backports"
+          section="main,contrib,non-free"
+          /mnt/socoding/mirror-sync/tuna-debmirror.sh ${distro} ${dist} ${section}
+  
+  debian-security:
+    runs-on: [self-hosted, linux, main, socoding]
+    steps:        
+      - name: perform sync
+        run: |
+          distro="debian-security"
+          dist="buster/updates"
+          section="main,contrib,non-free"
+          /mnt/socoding/mirror-sync/tuna-debmirror.sh ${distro} ${dist} ${section}
+          
+  ubuntu:
+    runs-on: [self-hosted, linux, main, socoding]
+    steps:        
+      - name: perform sync
+        run: |
+          distro="ubuntu"
+          dist="focal,focal-updates,focal-security,focal-backports,focal-proposed,groovy,groovy-updates,groovy-security,groovy-backports,groovy-proposed,hirsute,hirsute-backports,hirsute-proposed,hirsute-security,hirsute-updates"
+          section="main,multiverse,universe,restricted"
+          /mnt/socoding/mirror-sync/tuna-debmirror.sh ${distro} ${dist} ${section}
