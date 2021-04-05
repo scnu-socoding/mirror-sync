@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /mnt/socoding/mirror-sync/util.sh
+
 distro=${1}
 dist=${2}
 section=${3}
@@ -16,6 +18,8 @@ debmirror /mnt/socoding/files/${distro} \
     --ignore-release-gpg \
     --ignore-small-errors \
     --progress
+
+ret ${4} ${?}
 
 touch /mnt/socoding/files/${distro}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log

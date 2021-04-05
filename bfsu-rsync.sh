@@ -19,6 +19,8 @@
 #
 ########
 
+source /mnt/socoding/mirror-sync/util.sh
+
 distro=${1}
 
 # Directory where the repo is stored locally. Example: /srv/repo
@@ -64,6 +66,8 @@ rsync_cmd() {
 rsync_cmd \
 	"${source_url}" \
 	"${target}"
+
+ret ${2} ${?}
 
 touch ${target}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
