@@ -4,15 +4,15 @@ rep(){
     i=1
     j=-5
     while read line; do
-        result=$(echo ${line} | grep "${2}")
+        result=$(echo ${line} | grep "${1}")
         if [[ "$result" != "" ]]; then
             j=${i}
             echo "$line"
         elif ((i==${j}+1)); then
-            echo "text: 'stat: ${1}',"
-        elif ((i==${j}+2 && ${1}==0)); then
+            echo "text: 'stat: ${2}',"
+        elif ((i==${j}+2 && ${2}==0)); then
             echo "color: 'mdl-chip mdl-color--green'"
-        elif ((i==${1}+2)); then
+        elif ((i==${2}+2)); then
             echo "color: 'mdl-chip mdl-color--red'"
         else
             echo "$line"
