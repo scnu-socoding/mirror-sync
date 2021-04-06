@@ -2,13 +2,18 @@
 
 rep(){
     i=1
+    j=-5
     while read line; do
-        if((i==${1}));then
-            echo "text:'stat: ${2}',"
-        elif((i==${1}+1 && ${2}==0));then
-            echo "color:'mdl-chip mdl-color--green'"
-        elif((i==${1}+1));then
-            echo "color:'mdl-chip mdl-color--red'"
+        result=$(echo ${line} | grep "${2}")
+        if [[ "$result" != "" ]]; then
+            j=${i}
+            echo "$line"
+        elif ((i==${j}+1)); then
+            echo "text: 'stat: ${1}',"
+        elif ((i==${j}+2 && ${1}==0)); then
+            echo "color: 'mdl-chip mdl-color--green'"
+        elif ((i==${1}+2)); then
+            echo "color: 'mdl-chip mdl-color--red'"
         else
             echo "$line"
         fi
