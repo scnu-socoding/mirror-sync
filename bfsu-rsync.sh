@@ -67,7 +67,7 @@ rsync_cmd \
 	"${source_url}" \
 	"${target}"
 
-ret ${2} ${?}
+rep ${2} ${?}
 
 touch ${target}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log

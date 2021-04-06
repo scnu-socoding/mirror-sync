@@ -19,7 +19,7 @@ debmirror /mnt/socoding/files/${distro} \
     --ignore-small-errors \
     --progress
 
-ret ${4} ${?}
+rep ${4} ${?}
 
 touch /mnt/socoding/files/${distro}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
