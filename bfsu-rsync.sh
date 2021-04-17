@@ -19,8 +19,6 @@
 #
 ########
 
-source /mnt/socoding/mirror-sync/util.sh
-
 distro=${1}
 
 # Directory where the repo is stored locally. Example: /srv/repo
