@@ -67,7 +67,7 @@ rsync_cmd \
 	"${source_url}" \
 	"${target}"
 
-rep ${2} ${?}
+/mnt/socoding/mirror-sync/util/update-status.py ${2} ${?}
 
 touch ${target}
 echo "Last sync was $(LC_ALL=C date)" >> /mnt/socoding/mirror-log/${distro}.log
